@@ -1,13 +1,6 @@
 # server.rb
-require 'net/http'
 require 'bundler'
 Bundler.require
-
-def get_readme(owner, repo)
-  url = URI("https://api.github.com/repos/#{owner}/#{repo}/readme")
-  res = Net::HTTP.get_response(url) # => String
-  res.body
-end
 
 before do
   content_type 'application/json'
@@ -28,5 +21,5 @@ end
 get '/repos/:owner/:repo/readme' do
   owner = params[:owner] if params[:owner]
   repo = params[:repo] if params[:repo]
-  get_readme(owner, repo)
+  Octokit.readme "#{owner}/#{repo}", :accept => 'application/vnd.github.raw'
 end

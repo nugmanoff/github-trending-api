@@ -6,6 +6,8 @@ GEM
     backports (3.8.0)
     domain_name (0.5.20170404)
       unf (>= 0.0.5, < 1.0.0)
+    faraday (0.12.2)
+      multipart-post (>= 1.2, < 3)
     git-trend (1.1.8)
       addressable (~> 2.5.1)
       mb_string (~> 0.1.8)
@@ -31,16 +33,22 @@ GEM
     mime-types-data (3.2016.0521)
     mini_portile2 (2.2.0)
     multi_json (1.12.1)
+    multipart-post (2.0.0)
     mustermann (1.0.0)
     net-http-digest_auth (1.4.1)
     net-http-persistent (2.9.4)
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
     ntlm-http (0.1.1)
+    octokit (4.7.0)
+      sawyer (~> 0.8.0, >= 0.5.3)
     public_suffix (2.0.5)
     rack (2.0.3)
     rack-protection (2.0.0)
       rack
+    sawyer (0.8.1)
+      addressable (>= 2.3.5, < 2.6)
+      faraday (~> 0.8, < 1.0)
     sinatra (2.0.0)
       mustermann (~> 1.0)
       rack (~> 2.0)
@@ -67,6 +75,7 @@ PLATFORMS
 DEPENDENCIES
   git-trend
   json
+  octokit (~> 4.0)
   sinatra
   sinatra-contrib
 
