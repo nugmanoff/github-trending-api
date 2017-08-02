@@ -11,9 +11,9 @@ end
 error StandardError do
   content_type 'application/json'
   status 404
-  # res = Hash.new
-  # res["error"] = "no repos for this language"
-  # res.to_json
+  res = Hash.new
+  res["error"] = "no repos for this language"
+  res.to_json
 end
 
 get '/languages' do
