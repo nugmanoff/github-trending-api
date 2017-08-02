@@ -2,6 +2,10 @@
 require 'bundler'
 Bundler.require
 
+error StandardError do
+  status 404
+end
+
 before do
   content_type 'application/json'
 end
@@ -13,7 +17,11 @@ end
 get '/repos/' do
   lang = params[:language] if params[:language]
   since = params[:since] if params[:since]
-  repos = GitTrend.get(lang, since)
+  begin
+    repos = GitTrend.get(lang, since)
+  rescue GitTrend::ScrapeException
+    raise StandardError, 'no repo'
+  end
   repos.map { |repo|
     repo.to_h }.to_json
 end
