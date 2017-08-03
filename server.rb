@@ -1,19 +1,17 @@
 # server.rb
+
 require 'bundler'
 Bundler.require
 
 set :show_exceptions, :after_handler
 
 before do
-  content_type 'application/json'
+  content_type 'application/json', 'charset' => 'utf-8'
+  content_type :html, 'charset' => 'utf-8'
 end
 
 error StandardError do
-  content_type 'application/json'
   status 404
-  res = Hash.new
-  res["error"] = "no repos for this language"
-  res.to_json
 end
 
 get '/languages' do
